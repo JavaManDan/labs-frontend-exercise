@@ -12,6 +12,8 @@
     "cookies": "^0.8.0",
     "got": "^11.8.2",
     "next": "10.2.0",
+    "poker-hand-evaluator": "^1.0.1",
+    "pokersolver": "^2.1.4",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "uuid": "^8.3.2"

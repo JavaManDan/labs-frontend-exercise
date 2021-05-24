@@ -1,7 +1,7 @@
 import Cookies from "cookies";
 import { useRouter } from "next/router";
 import { Fragment, useEffect, useState } from "react";
-import { allPlayersJoined, getGame } from "../../src/gameStore";
+import { allPlayersExchanged, allPlayersJoined, getGame } from "../../src/gameStore";
 import GameStyle from '../../styles/gamePageStyle.module.css'
 
 export async function getServerSideProps(context) {
@@ -31,6 +31,16 @@ export async function getServerSideProps(context) {
     };
   }
 
+  if(allPlayersExchanged(gameId)){
+    //console.log('exchanged')
+    return{
+      redirect: {
+        destination: `/games/${gameId}/results`,
+        permanent: false
+      }
+    }
+  } //else console.log('not exchanged')
+
   return {
     props: {
       currentPlayer: gameState.players[playerId],
@@ -46,6 +56,7 @@ const Game = ({ currentPlayer: { cards, exchanged } }) => {
   const [windowSize, setWindowSize] = useState({ width: undefined, height: undefined });
 
   useEffect(() => {
+    if(exchanged) setTimeout(()=> (document.location = `/games/${gameId}`), 5000);//refresh to see if all players have exchanged 
     //browser resizing 
     const resizeBrowser = () => setWindowSize({ width: window.innerWidth, height: window.innerHeight });//set the window width/height to state
     window.addEventListener("resize", resizeBrowser);
