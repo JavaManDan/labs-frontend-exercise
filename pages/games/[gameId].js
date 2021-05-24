@@ -1,6 +1,6 @@
 import Cookies from "cookies";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { allPlayersJoined, getGame } from "../../src/gameStore";
 import GameStyle from '../../styles/gamePageStyle.module.css'
 
@@ -55,7 +55,7 @@ const Game = ({ currentPlayer: { cards, exchanged } }) => {
 
   let condition = windowSize.width < 800;//for mobile/ browser styles
 
-  const individualCard = (obj, i) => {
+  const individualCard = (obj, i) => {//individual cards + the discard button / chk box
     return (
       <div className={condition ? GameStyle.mobileIndividualCard : GameStyle.individualCard}>
         <img src={obj.images.png} className={condition ? GameStyle.mobileCardImage : GameStyle.cardImage} />
@@ -77,6 +77,23 @@ const Game = ({ currentPlayer: { cards, exchanged } }) => {
         {/* The playing card(s) container */}
         <div className={condition ? GameStyle.mobileCardContainer : GameStyle.cardContainer}>
           {cardComps}
+        </div>
+        <div className={condition ? GameStyle.mobileBurnButtonContainer : GameStyle.discardContainer}>
+          {
+            condition ?
+              //if - for mobile version
+              <input
+                className={GameStyle.mobileBurnButton}
+                value="Burn selected cards" /> :
+              //else - for the browser version 
+              <Fragment>
+                  <h1 className={GameStyle.title}> 5 Card Draw </h1>
+                  <h4 className={GameStyle.titleH4}> It's like poker but easy </h4>
+                  <button className={GameStyle.burnButton}>
+                    Burn selected cards
+                  </button>
+              </Fragment>
+            }
         </div>
       </div>
     </div>

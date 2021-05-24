@@ -99,3 +99,44 @@
     color: #fff;
 }
 
+.mobileBurnButtonContainer{
+    display: flex;
+    height: 60px;
+    width: 100%;
+    border: solid 2px black;
+}
+
+.discardContainer {
+    height: auto;
+    border: solid black 3px;
+    flex: 1.25;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(187, 187, 187);
+}
+
+.mobileBurnButton {
+    width: 100%;
+    color: #000;
+    font-size: 1.5em;
+    background-color: #ccc;
+    text-align: center;
+}
+
+.burnButton  {
+    margin-top: auto;
+    margin-bottom: 15px;
+    height: 15%;
+    width: 90%;
+    font-size: 1.25vw;
+    font-weight: 500;
+}
+
+.title {
+    font-size: 2.5vw;
+}
+
+.titleH4 {
+    font-size: 1.5vw;
+}
