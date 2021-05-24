@@ -5,6 +5,7 @@ import Head from "next/head";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function MyApp({ Component, pageProps }) {
+  //test 
   return (
     <div className="container">
       <Head>
